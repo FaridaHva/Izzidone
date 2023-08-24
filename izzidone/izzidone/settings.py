@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 LOCAL_APPS = [
-    'users',
+    'users', 'services'
 ]
 
 # Application definition

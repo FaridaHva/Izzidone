@@ -6,10 +6,10 @@ from users import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),  # Correct
+    path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),  
     path(
         'api/docs/',
-        SpectacularSwaggerView.as_view(url_name='api-schema'),  # Corrected url_name
+        SpectacularSwaggerView.as_view(url_name='api-schema'),
         name='api-docs',
     ),
     path('users/', include('users.urls')),
@@ -23,6 +23,6 @@ urlpatterns = [
         views.ResetPasswordAPI.as_view(),
         name="reset-password",
     ),
-
+    path('services/', include('services.urls')),
 ]
 
