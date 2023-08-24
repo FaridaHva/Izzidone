@@ -17,7 +17,7 @@ from django.utils.encoding import force_bytes
 
 # RegisterAPI
 class RegisterView(generics.CreateAPIView):
-    queryset = User.objects.all()  # Queryset containing all User objects
+    queryset = User.objects.all()  # Queryset containing all User objects   
     serializer_class = RegisterSerializer  
     
 # LoginAPI
