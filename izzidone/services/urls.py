@@ -11,5 +11,8 @@ urlpatterns = [
     #Professionals
     path('professionals/', views.ProfessionalListCreateView.as_view(), name='professional-list-create'),
     path('professionals/<int:pk>/', views.ProfessionalRetrieveView.as_view(), name='professional-retrieve'),
+    #Orders
+    path('orders/', views.OrderListCreateAPIView.as_view(), name='order-list-create'),
+    path('orders/<int:pk>/', views.OrderRetrieveAPIView.as_view(), name='order-retrieve'),
 
     ]

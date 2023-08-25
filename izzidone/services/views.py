@@ -1,7 +1,7 @@
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated  
-from .models import Service, Subservice, ChooseService, Professional, Certificate, Portfolio, MySkills, AllPros
-from .serializers import ServiceSerializer, SubserviceSerializer, ChooseServiceSerializer,  ProfessionalSerializer, MySkillsSerializer, AllProsSerializer
+from .models import Service, Subservice, ChooseService, Professional, Order
+from .serializers import ServiceSerializer, SubserviceSerializer, ChooseServiceSerializer,  ProfessionalSerializer, OrderSerializer
 
 
 class ServiceListCreateView(generics.ListCreateAPIView):
@@ -41,3 +41,19 @@ class ProfessionalListCreateView(generics.ListCreateAPIView):
 class ProfessionalRetrieveView(generics.RetrieveAPIView):
     queryset = Professional.objects.filter()
     serializer_class = ProfessionalSerializer
+
+
+#Orders
+
+class OrderListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Order.objects.filter() 
+    serializer_class = OrderSerializer
+    permission_classes = (IsAuthenticated,) 
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+class OrderRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = (IsAuthenticated,)

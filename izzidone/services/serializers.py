@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Service, Subservice
-from .models import Service, Subservice, ChooseService, Professional, MySkills, AllPros
+from .models import Service, Subservice, ChooseService, Professional, MySkills, AllPros, Order
 
 
 #Services
@@ -59,3 +59,17 @@ class ProfessionalSerializer(serializers.ModelSerializer):
         )
 
         return professional
+    
+
+
+#Orders
+ 
+class OrderSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault()) 
+    
+    class Meta:
+        model = Order
+        exclude = ('created_at', 'is_active')
+
+
+
