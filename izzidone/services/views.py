@@ -1,7 +1,7 @@
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated  
-from .models import Service, Subservice, ChooseService, Professional, Order
-from .serializers import ServiceSerializer, SubserviceSerializer, ChooseServiceSerializer,  ProfessionalSerializer, OrderSerializer
+from .models import Service, Subservice, ChooseService, Professional, Order, Blog, BlogDetails
+from .serializers import ServiceSerializer, SubserviceSerializer, ChooseServiceSerializer,  ProfessionalSerializer, OrderSerializer, BlogSerializer, BlogDetailsSerializer
 
 
 class ServiceListCreateView(generics.ListCreateAPIView):
@@ -57,3 +57,27 @@ class OrderRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
     permission_classes = (IsAuthenticated,)
+
+
+
+#Blogs
+
+
+
+class BlogListAPIView(generics.ListAPIView):
+    queryset = Blog.objects.filter()
+    serializer_class = BlogSerializer
+
+
+class BlogCreateAPIView(generics.CreateAPIView):
+    serializer_class = BlogSerializer
+
+
+class BlogDetailsListAPIView(generics.ListAPIView):
+    queryset = BlogDetails.objects.filter()
+    serializer_class = BlogDetailsSerializer
+
+
+class BlogDetailsRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = BlogDetails.objects.all()
+    serializer_class = BlogDetailsSerializer

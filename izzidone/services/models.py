@@ -164,3 +164,37 @@ class Order(models.Model):
     
 
 
+#Blogs
+
+class Blog(models.Model):
+    title = models.CharField(max_length=50, verbose_name="Title" )
+    user = models.ForeignKey("users.User", verbose_name="User", on_delete=models.CASCADE)
+    content = models.TextField(verbose_name="Blog Content")
+    image = models.ImageField(verbose_name="Service Image")
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.title
+    
+
+    class Meta:
+        verbose_name= 'Blog'
+        verbose_name_plural = 'Blogs'
+
+
+
+class BlogDetails(models.Model):
+    title = models.CharField(max_length=50, verbose_name="Title" )
+    content = models.TextField(verbose_name="Blog Content")
+    blog = models.ForeignKey("services.Blog", on_delete=models.CASCADE, verbose_name="Blog") 
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name= 'BlogDetails'
+        verbose_name_plural = 'BlogDetails'    
+

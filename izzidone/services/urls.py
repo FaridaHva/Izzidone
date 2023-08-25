@@ -14,5 +14,9 @@ urlpatterns = [
     #Orders
     path('orders/', views.OrderListCreateAPIView.as_view(), name='order-list-create'),
     path('orders/<int:pk>/', views.OrderRetrieveAPIView.as_view(), name='order-retrieve'),
+    path('blogs/', views.BlogListAPIView.as_view(), name='blog-list'),
+    path('blogs/create/', views.BlogCreateAPIView.as_view(), name='blog-create'),
+    path('blog-details/', views.BlogDetailsListAPIView.as_view(), name='blog-details-list'),
+    path('blog-details/<int:pk>/', views.BlogDetailsRetrieveAPIView.as_view(), name='blog-details-retrieve'),
 
     ]
