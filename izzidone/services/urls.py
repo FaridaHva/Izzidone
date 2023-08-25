@@ -1,12 +1,15 @@
 from django.urls import path
-from .views import ServiceListCreateView, ServiceRetrieveView, ServiceDestroyView, SubserviceListCreateView, SubserviceRetrieveView, SubserviceDestroyView, ChooseServiceListCreateView
+from . import views
 
 urlpatterns = [
-    path('services/', ServiceListCreateView.as_view(), name='service-list'),
-    path('services/<int:pk>/', ServiceRetrieveView.as_view(), name='service-detail'),
-    path('services/<int:pk>/destroy/', ServiceDestroyView.as_view(), name='service-destroy'),  
-    path('subservices/', SubserviceListCreateView.as_view(), name='subservice-list'),
-    path('subservices/<int:pk>/', SubserviceRetrieveView.as_view(), name='subservice-detail'),
-    path('subservices/<int:pk>/destroy/', SubserviceDestroyView.as_view(), name='subservice-destroy'),  
-    path('choose-services/', ChooseServiceListCreateView.as_view(), name='choose-service-list'),
+    #Services
+    path('services/', views.ServiceListCreateView.as_view(), name='service-list'),
+    path('services/<int:pk>/', views.ServiceRetrieveView.as_view(), name='service-detail'),
+    path('subservices/', views.SubserviceListCreateView.as_view(), name='subservice-list'),
+    path('subservices/<int:pk>/', views.SubserviceRetrieveView.as_view(), name='subservice-detail'),
+    path('choose-services/', views.ChooseServiceListCreateView.as_view(), name='choose-service-list'),
+    #Professionals
+    path('professionals/', views.ProfessionalListCreateView.as_view(), name='professional-list-create'),
+    path('professionals/<int:pk>/', views.ProfessionalRetrieveView.as_view(), name='professional-retrieve'),
+
     ]
